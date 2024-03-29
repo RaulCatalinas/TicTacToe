@@ -1,0 +1,7 @@
+.turn .square,
+.winner .square {
+  pointer-events: none;
+  width: 70px;
+  height: 70px;
+  border-color: transparent;
+}
