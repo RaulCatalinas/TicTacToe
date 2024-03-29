@@ -1,5 +1,4 @@
 // CSS
-import styles from '@/css/board.module.css'
 
 // Hooks
 import { useBoard } from '@/hooks/useBoard.js'
@@ -12,20 +11,23 @@ import Turns from './Turns.jsx'
 // Constants
 import { TURNS } from '@/constants/turns.js'
 
+// Layouts
+import BoardLayout from '@/layouts/BoardLayout.jsx'
+import GameLayout from '@/layouts/GameLayout.jsx'
+
 export default function Board() {
   const { board, updateBoard } = useBoard(Array(9).fill(null))
   const { turn, changeTurn } = useTurn(TURNS.X)
 
   return (
-    <main className={styles.board}>
-      <h1>TicTacToe</h1>
-      <section className={styles.game}>
+    <BoardLayout>
+      <GameLayout>
         {board.map((_, index) => {
           return <Square key={index}>{board[index]}</Square>
         })}
-      </section>
+      </GameLayout>
 
       <Turns currentTurn={turn} />
-    </main>
+    </BoardLayout>
   )
 }
