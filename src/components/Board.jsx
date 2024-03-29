@@ -1,5 +1,3 @@
-// CSS
-
 // Hooks
 import { useBoard } from '@/hooks/useBoard.js'
 import { useTurn } from '@/hooks/useTurn.js'
