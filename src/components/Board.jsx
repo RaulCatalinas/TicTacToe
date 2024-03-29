@@ -2,11 +2,11 @@
 import styles from '@/css/board.module.css'
 
 // Hooks
-import { useBoard } from '@/hooks/useBoard'
+import { useBoard } from '@/hooks/useBoard.js'
 import { useTurn } from '@/hooks/useTurn.js'
 
 // Components
-import Square from './Square'
+import Square from './Square.jsx'
 import Turns from './Turns.jsx'
 
 // Constants
