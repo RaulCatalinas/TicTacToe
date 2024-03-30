@@ -1,7 +1,11 @@
+// React
 import { useState } from 'react'
 
-export function useTurn(initialState) {
-  const [turn, setTurn] = useState(initialState)
+// Constants
+import { TURNS } from '@/constants/turns'
+
+export function useTurn() {
+  const [turn, setTurn] = useState(TURNS.X)
 
   const changeTurn = newTurn => {
     setTurn(newTurn)

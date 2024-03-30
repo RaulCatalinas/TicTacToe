@@ -1,10 +1,8 @@
 // Hooks
 import { useBoard } from '@/hooks/useBoard.js'
-import { useTurn } from '@/hooks/useTurn.js'
 
 // Components
 import Square from './Square.jsx'
-import Turns from './Turns.jsx'
 
 // Constants
 import { TURNS } from '@/constants/turns.js'
@@ -13,19 +11,29 @@ import { TURNS } from '@/constants/turns.js'
 import BoardLayout from '@/layouts/BoardLayout.jsx'
 import GameLayout from '@/layouts/GameLayout.jsx'
 
-export default function Board() {
-  const { board, updateBoard } = useBoard(Array(9).fill(null))
-  const { turn, changeTurn } = useTurn(TURNS.X)
+export default function Board({ turn, changeTurn }) {
+  const { board, updateBoard } = useBoard()
+
+  const handleUpdateBoard = index => {
+    if (board[index] != null) return
+
+    const newBoard = [...board]
+
+    updateBoard(newBoard.with(index, turn))
+    changeTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
+  }
 
   return (
     <BoardLayout>
       <GameLayout>
         {board.map((_, index) => {
-          return <Square key={index}>{board[index]}</Square>
+          return (
+            <Square key={index} updateBoard={handleUpdateBoard} index={index}>
+              {board[index]}
+            </Square>
+          )
         })}
       </GameLayout>
-
-      <Turns currentTurn={turn} />
     </BoardLayout>
   )
 }
