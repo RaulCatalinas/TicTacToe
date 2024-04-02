@@ -4,6 +4,7 @@
     "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
-    "clinyong.vscode-css-modules"
+    "clinyong.vscode-css-modules",
+    "oven.bun-vscode"
   ]
 }
