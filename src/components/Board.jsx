@@ -11,16 +11,31 @@ import { TURNS } from '@/constants/turns.js'
 import BoardLayout from '@/layouts/BoardLayout.jsx'
 import GameLayout from '@/layouts/GameLayout.jsx'
 
-export default function Board({ turn, changeTurn }) {
+// Utils
+import { checkEndGame } from '@/utils/game.js'
+import { checkWinner } from '@/utils/winner.js'
+
+export default function Board({ turn, changeTurn, changeWinner, winner }) {
   const { board, updateBoard } = useBoard()
 
   const handleUpdateBoard = index => {
-    if (board[index] != null) return
+    if (board[index] != null || winner) return
 
     const newBoard = [...board]
 
-    updateBoard(newBoard.with(index, turn))
+    newBoard[index] = turn
+
+    updateBoard(newBoard)
     changeTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
+
+    const newWinner = checkWinner(newBoard)
+
+    if (newWinner) changeWinner(newWinner)
+    else {
+      const gameOver = checkEndGame(newBoard)
+
+      if (gameOver) changeWinner(false)
+    }
   }
 
   return (
