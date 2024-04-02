@@ -1,41 +1,30 @@
 // Hooks
 import { useBoard } from '@/hooks/useBoard.js'
-
 // Components
 import Square from './Square.jsx'
 
 // Constants
-import { TURNS } from '@/constants/turns.js'
 
 // Layouts
 import BoardLayout from '@/layouts/BoardLayout.jsx'
 import GameLayout from '@/layouts/GameLayout.jsx'
 
-// Utils
-import { checkEndGame } from '@/utils/game.js'
-import { checkWinner } from '@/utils/winner.js'
+// Controllers
+import { updateBoardController } from '@/controllers/update-board-controller.js'
 
 export default function Board({ turn, changeTurn, changeWinner, winner }) {
   const { board, updateBoard } = useBoard()
 
   const handleUpdateBoard = index => {
-    if (board[index] != null || winner) return
-
-    const newBoard = [...board]
-
-    newBoard[index] = turn
-
-    updateBoard(newBoard)
-    changeTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
-
-    const newWinner = checkWinner(newBoard)
-
-    if (newWinner) changeWinner(newWinner)
-    else {
-      const gameOver = checkEndGame(newBoard)
-
-      if (gameOver) changeWinner(false)
-    }
+    updateBoardController({
+      board,
+      index,
+      turn,
+      changeTurn,
+      updateBoard,
+      changeWinner,
+      winner
+    })
   }
 
   return (
