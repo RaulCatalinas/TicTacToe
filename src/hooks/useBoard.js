@@ -7,5 +7,9 @@ export function useBoard() {
     setBoard(newBoard)
   }
 
-  return { board, updateBoard }
+  const resetBoard = () => {
+    setBoard(Array(9).fill(null))
+  }
+
+  return { board, updateBoard, resetBoard }
 }

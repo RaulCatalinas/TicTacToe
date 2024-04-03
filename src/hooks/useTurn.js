@@ -11,5 +11,9 @@ export function useTurn() {
     setTurn(newTurn)
   }
 
-  return { turn, changeTurn }
+  const resetTurn = () => {
+    setTurn(TURNS.X)
+  }
+
+  return { turn, changeTurn, resetTurn }
 }

@@ -1,9 +1,5 @@
-// Hooks
-import { useBoard } from '@/hooks/useBoard.js'
 // Components
 import Square from './Square.jsx'
-
-// Constants
 
 // Layouts
 import BoardLayout from '@/layouts/BoardLayout.jsx'
@@ -18,9 +14,14 @@ import { gameStorage } from '@/utils/game.js'
 // React
 import { useEffect } from 'react'
 
-export default function Board({ turn, changeTurn, changeWinner, winner }) {
-  const { board, updateBoard } = useBoard()
-
+export default function Board({
+  turn,
+  changeTurn,
+  changeWinner,
+  winner,
+  board,
+  updateBoard
+}) {
   useEffect(() => {
     gameStorage.resume({ key: 'tictactoe', updateBoard })
   }, [updateBoard])

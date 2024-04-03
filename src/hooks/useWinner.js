@@ -7,5 +7,9 @@ export function useWinner() {
     setWinner(newWinner)
   }
 
-  return { winner, changeWinner }
+  const resetWinner = () => {
+    setWinner(null)
+  }
+
+  return { winner, changeWinner, resetWinner }
 }
