@@ -23,7 +23,7 @@ function App() {
         winner={winner}
       />
       <Turns currentTurn={turn} />
-      {winner && <WinnerModal winner={winner} />}
+      {winner != null && <WinnerModal winner={winner} />}
     </>
   )
 }
