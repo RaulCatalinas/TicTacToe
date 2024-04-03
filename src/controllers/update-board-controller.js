@@ -2,7 +2,7 @@
 import { TURNS } from '@/constants/turns'
 
 // Utils
-import { checkEndGame } from '@/utils/game'
+import { checkEndGame, gameStorage } from '@/utils/game'
 import { checkWinner } from '@/utils/winner'
 
 export function updateBoardController({
@@ -20,15 +20,24 @@ export function updateBoardController({
 
   newBoard[index] = turn
 
+  gameStorage.save({ key: 'tictactoe', value: newBoard })
+
   updateBoard(newBoard)
   changeTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
 
   const newWinner = checkWinner(newBoard)
 
-  if (newWinner) changeWinner(newWinner)
-  else {
+  if (newWinner) {
+    gameStorage.delete('tictactoe')
+
+    changeWinner(newWinner)
+  } else {
     const gameOver = checkEndGame(newBoard)
 
-    if (gameOver) changeWinner(false)
+    if (gameOver) {
+      gameStorage.delete('tictactoe')
+
+      changeWinner(false)
+    }
   }
 }

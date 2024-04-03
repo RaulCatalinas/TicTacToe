@@ -12,8 +12,18 @@ import GameLayout from '@/layouts/GameLayout.jsx'
 // Controllers
 import { updateBoardController } from '@/controllers/update-board-controller.js'
 
+// Utils
+import { gameStorage } from '@/utils/game.js'
+
+// React
+import { useEffect } from 'react'
+
 export default function Board({ turn, changeTurn, changeWinner, winner }) {
   const { board, updateBoard } = useBoard()
+
+  useEffect(() => {
+    gameStorage.resume({ key: 'tictactoe', updateBoard })
+  }, [updateBoard])
 
   const handleUpdateBoard = index => {
     updateBoardController({
