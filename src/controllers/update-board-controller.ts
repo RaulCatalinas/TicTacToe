@@ -2,12 +2,15 @@
 import { TURNS } from '@/constants/turns'
 
 // Utils
-import { checkEndGame, gameStorage } from '@/utils/game'
+import { checkEndGame } from '@/utils/game'
 import { checkWinner } from '@/utils/winner'
 
 // Types
 import type { Board } from '@/types/board'
 import type { Winner } from '@/types/winner'
+
+// Storage
+import { gameStorage } from '@/storage/game'
 
 interface Props {
   board: Board
@@ -32,22 +35,26 @@ export function updateBoardController({
 
   const updatedBoard = board.with(index, turn)
 
-  gameStorage.save({ key: 'tictactoe', value: updatedBoard })
+  gameStorage.save({ key: 'board', value: updatedBoard })
 
   updateBoard(updatedBoard)
   changeTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
 
+  gameStorage.save({ key: 'turn', value: turn === TURNS.X ? TURNS.O : TURNS.X })
+
   const newWinner = checkWinner(updatedBoard)
 
   if (newWinner) {
-    gameStorage.delete('tictactoe')
+    gameStorage.delete('board')
+    gameStorage.delete('turn')
 
     changeWinner(newWinner)
   } else {
     const gameOver = checkEndGame(updatedBoard)
 
     if (gameOver) {
-      gameStorage.delete('tictactoe')
+      gameStorage.delete('board')
+      gameStorage.delete('turn')
 
       changeWinner(false)
     }

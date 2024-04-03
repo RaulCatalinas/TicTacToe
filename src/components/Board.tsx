@@ -6,13 +6,7 @@ import BoardLayout from '@/layouts/BoardLayout'
 import GameLayout from '@/layouts/GameLayout'
 
 // Controllers
-import { updateBoardController } from '@/controllers/update-board-controller.js'
-
-// Utils
-import { gameStorage } from '@/utils/game.js'
-
-// React
-import { useEffect } from 'react'
+import { updateBoardController } from '@/controllers/update-board-controller'
 
 // Constants
 import type { TURNS } from '@/constants/turns'
@@ -38,10 +32,6 @@ export default function Board({
   board,
   updateBoard
 }: Props) {
-  useEffect(() => {
-    gameStorage.resume({ key: 'tictactoe', updateBoard })
-  }, [updateBoard])
-
   const handleUpdateBoard = (index: number) => {
     updateBoardController({
       board,
