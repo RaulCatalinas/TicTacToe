@@ -11,6 +11,9 @@ import { useBoard } from './hooks/useBoard.js'
 import { useTurn } from './hooks/useTurn.js'
 import { useWinner } from './hooks/useWinner.js'
 
+// Third-Party components
+import { Analytics } from '@vercel/analytics/react'
+
 function App() {
   const { board, updateBoard, resetBoard } = useBoard()
   const { turn, changeTurn, resetTurn } = useTurn()
@@ -37,6 +40,8 @@ function App() {
           resetBoard={resetTurn}
         />
       )}
+
+      <Analytics />
     </>
   )
 }
