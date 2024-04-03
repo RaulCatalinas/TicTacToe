@@ -1,17 +1,29 @@
 // Components
-import PlayAgainButton from './PlayAgainButton.jsx'
-import Square from './Square.jsx'
+import PlayAgainButton from './PlayAgainButton.js'
+import Square from './Square.js'
 
 // Constants
 import { TEXTS } from '@/constants/texts.js'
-import WinnerModalLayout from '@/layouts/WinnerModalLayout.jsx'
+
+// Layouts
+import WinnerModalLayout from '@/layouts/WinnerModalLayout'
+
+// Types
+import { Winner } from '@/types/winner'
+
+interface Props {
+  winner: Winner,
+  resetWinner: () => void,
+  resetTurn: () => void,
+  resetBoard: () => void,
+}
 
 export default function WinnerModal({
   winner,
   resetWinner,
   resetTurn,
   resetBoard
-}) {
+}: Props) {
   return (
     <WinnerModalLayout>
       <p style={{ fontSize: 21 }}>{winner ? TEXTS.victory : TEXTS.draw}</p>

@@ -1,9 +1,13 @@
+// Types
+import type { Winner } from '@/types/winner'
+
+// React
 import { useState } from 'react'
 
 export function useWinner() {
-  const [winner, setWinner] = useState(null)
+  const [winner, setWinner] = useState<Winner>(null)
 
-  const changeWinner = newWinner => {
+  const changeWinner = (newWinner: Winner) => {
     setWinner(newWinner)
   }
 

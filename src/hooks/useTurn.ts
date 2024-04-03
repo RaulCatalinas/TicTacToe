@@ -7,7 +7,7 @@ import { TURNS } from '@/constants/turns'
 export function useTurn() {
   const [turn, setTurn] = useState(TURNS.X)
 
-  const changeTurn = newTurn => {
+  const changeTurn = (newTurn: TURNS) => {
     setTurn(newTurn)
   }
 

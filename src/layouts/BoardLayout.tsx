@@ -1,6 +1,10 @@
+// CSS
 import styles from '@/css/board.module.css'
 
-export default function BoardLayout({ children }) {
+// React
+import type { PropsWithChildren } from 'react'
+
+export default function BoardLayout({ children }: PropsWithChildren) {
   return (
     <div className={styles.board}>
       <h1>3 En Raya</h1>

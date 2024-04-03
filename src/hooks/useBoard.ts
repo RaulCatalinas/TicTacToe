@@ -1,9 +1,13 @@
+// React
 import { useState } from 'react'
 
-export function useBoard() {
-  const [board, setBoard] = useState(Array(9).fill(null))
+// Types
+import type { Board } from '@/types/board'
 
-  const updateBoard = newBoard => {
+export function useBoard() {
+  const [board, setBoard] = useState<Board>(Array(9).fill(null))
+
+  const updateBoard = (newBoard: Board) => {
     setBoard(newBoard)
   }
 

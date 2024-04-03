@@ -1,6 +1,10 @@
+// Constants
 import { WINNER_COMBINATIONS } from '@/constants/winner.js'
 
-export function checkWinner(boardToCheck) {
+// Types
+import type { Board } from '@/types/board'
+
+export function checkWinner(boardToCheck: Board) {
   for (const winnerCombination of WINNER_COMBINATIONS) {
     const [a, b, c] = winnerCombination
 
