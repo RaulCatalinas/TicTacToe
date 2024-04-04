@@ -12,10 +12,10 @@ import WinnerModalLayout from '@/layouts/WinnerModalLayout'
 import { Winner } from '@/types/winner'
 
 interface Props {
-  winner: Winner,
-  resetWinner: () => void,
-  resetTurn: () => void,
-  resetBoard: () => void,
+  winner: Winner
+  resetWinner: () => void
+  resetTurn: () => void
+  resetBoard: () => void
 }
 
 export default function WinnerModal({

@@ -5,8 +5,8 @@ import { TEXTS } from '@/constants/texts'
 import styles from '@/css/play-again-button.module.css'
 
 interface Props {
-  resetWinner: () => void,
-  resetTurn: () => void,
+  resetWinner: () => void
+  resetTurn: () => void
   resetBoard: () => void
 }
 
