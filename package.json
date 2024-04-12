@@ -17,7 +17,7 @@
   "devDependencies": {
     "@s-ui/mono": "2.45.0",
     "@types/react": "18.2.74",
-    "@types/react-dom": "18.2.23",
+    "@types/react-dom": "18.2.24",
     "@typescript-eslint/eslint-plugin": "7.5.0",
     "@typescript-eslint/parser": "7.5.0",
     "@vitejs/plugin-react-swc": "3.6.0",
@@ -29,7 +29,7 @@
     "stylelint": "16.3.1",
     "stylelint-config-clean-order": "5.4.2",
     "stylelint-config-standard": "36.0.0",
-    "typescript": "5.4.3",
+    "typescript": "5.4.4",
     "vite": "5.2.8",
     "vite-tsconfig-paths": "4.3.2"
   }
