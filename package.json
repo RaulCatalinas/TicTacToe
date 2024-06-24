@@ -29,7 +29,7 @@
     "prettier": "3.3.2",
     "stylelint": "16.6.1",
     "stylelint-config-clean-order": "5.4.2",
-    "stylelint-config-standard": "36.0.0",
+    "stylelint-config-standard": "36.0.1",
     "typescript": "5.5.2",
     "vite": "5.3.1",
     "vite-tsconfig-paths": "4.3.2"
